@@ -11,6 +11,7 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
+        <button className="btn btn-success">Success</button>
         <button>Home</button>
       </Link>
 
