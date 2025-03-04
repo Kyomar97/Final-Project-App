@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -4,42 +4,49 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button className="btn btn-success">Success</button>
-        <button>Home</button>
-      </Link>
+    <nav className="h-16 flex items-center justify-between bg-slate-600 px-4">
+      <div className="flex items-center space-x-4">
+        <Link to="/">
+          <button className="btn btn-xs sm:btn-sm md:btn-md">Home</button>
+        </Link>
+      </div>
 
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
+      <div className="flex items-center space-x-4">
+        {isLoggedIn && (
+          <>
+            <button
+              onClick={logOutUser}
+              className="btn btn-xs sm:btn-sm md:btn-md"
+            >
+              Logout
+            </button>
 
-          <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
+            <Link to="/profile">
+              <button className="btn btn-xs sm:btn-sm md:btn-md">
+                Profile
+              </button>
+            </Link>
 
-          <span>{user && user.name}</span>
-        </>
-      )}
+            <span className="text-white">{user && user.name}</span>
+          </>
+        )}
 
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
+        {!isLoggedIn && (
+          <>
+            <Link to="/signup">
+              <button className="btn btn-xs sm:btn-sm md:btn-md">
+                Sign Up
+              </button>
+            </Link>
+            <Link to="/login">
+              <button className="btn btn-xs sm:btn-sm md:btn-md">Login</button>
+            </Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }
