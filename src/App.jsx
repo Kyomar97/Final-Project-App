@@ -4,14 +4,14 @@ import { useState } from "react";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import Footer from "./components/Footer/Footer";
 import Sidebar from "./components/SideBar/SideBar";
+
+import IntroPage from "./pages/IntroPage/IntroPage";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,7 +24,8 @@ function App() {
       <Navbar onOpenSidebar={handleOpenSidebar} />
       <Sidebar isOpen={isSidebarOpen} onClose={handleCloseSidebar} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<IntroPage />} />
+        <Route path="/home" element={<HomePage />} />
 
         <Route
           path="/profile"
@@ -32,23 +33,6 @@ function App() {
             <IsPrivate>
               <ProfilePage />
             </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignupPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
           }
         />
       </Routes>

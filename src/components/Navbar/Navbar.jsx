@@ -27,7 +27,7 @@ function Navbar({ onOpenSidebar }) {
 
       {/* Resto del Navbar */}
       <div className="flex space-x-4">
-        <Link to="/">
+        <Link to="/home">
           <button className="btn btn-xs sm:btn-sm md:btn-md">Home</button>
         </Link>
 
