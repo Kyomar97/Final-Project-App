@@ -7,32 +7,32 @@ function HomePage() {
       id: 1,
       name: "Cruz Roja",
       description: "Ayuda humanitaria en situaciones de emergencia.",
-      image: "https://via.placeholder.com/300x200?text=Cruz+Roja", // Logo de Cruz Roja
-      link: "/organization/cruz-roja",
+      image: "https://via.placeholder.com/300x200?text=Cruz+Roja",
+      link: "/projects/cruz-roja",
     },
     {
       id: 2,
       name: "Greenpeace",
       description: "Defensa del medio ambiente y la paz.",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Greenpeace_logo.svg/1200px-Greenpeace_logo.svg.png", // Logo de Greenpeace
-      link: "/organization/greenpeace",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Greenpeace_logo.svg/1200px-Greenpeace_logo.svg.png",
+      link: "/projects/greenpeace",
     },
     {
       id: 3,
       name: "Médicos Sin Fronteras",
       description: "Atención médica en zonas de conflicto y catástrofes.",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/M%C3%A9decins_Sans_Fronti%C3%A8res_Logo.svg/1200px-M%C3%A9decins_Sans_Fronti%C3%A8res_Logo.svg.png", // Logo de Médicos Sin Fronteras
-      link: "/organization/medicos-sin-fronteras",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/M%C3%A9decins_Sans_Fronti%C3%A8res_Logo.svg/1200px-M%C3%A9decins_Sans_Fronti%C3%A8res_Logo.svg.png",
+      link: "/projects/medicos-sin-fronteras",
     },
     {
       id: 4,
       name: "UNICEF",
       description: "Protección de los derechos de los niños.",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.svg/1200px-UNICEF_Logo.svg.png", // Logo de UNICEF
-      link: "/organization/unicef",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.svg/1200px-UNICEF_Logo.svg.png",
+      link: "/projects/unicef",
     },
   ];
 
@@ -54,7 +54,7 @@ function HomePage() {
               <img
                 src={org.image}
                 alt={org.name}
-                className="rounded-xl h-64 w-full object-contain" // Ajuste para logos
+                className="rounded-xl h-64 w-full object-contain"
               />
             </figure>
             <div className="card-body">

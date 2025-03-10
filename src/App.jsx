@@ -23,16 +23,16 @@ function App() {
       <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       <Routes>
+        {/* Página de introducción */}
         <Route path="/" element={<IntroPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/organization/cruz-roja" element={<ProjectsPage />} />
-        <Route path="/organization/greenpeace" element={<ProjectsPage />} />
-        <Route path="/organization/unicef" element={<ProjectsPage />} />
-        <Route
-          path="/organization/medicos-sin-fronteras"
-          element={<ProjectsPage />}
-        />
 
+        {/* Página de inicio */}
+        <Route path="/home" element={<HomePage />} />
+
+        {/* Página de proyectos (dinámica según la organización) */}
+        <Route path="/projects/:organizationName" element={<ProjectsPage />} />
+
+        {/* Página de perfil (privada) */}
         <Route
           path="/profile"
           element={
@@ -42,6 +42,7 @@ function App() {
           }
         />
       </Routes>
+
       <Footer />
     </div>
   );

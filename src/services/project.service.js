@@ -6,15 +6,12 @@ class ProjectService {
       baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005",
     });
 
-    // Automatically set JWT token in the headers for every request
+    // Automáticamente incluir el token JWT en las cabeceras de cada solicitud
     this.api.interceptors.request.use((config) => {
-      // Retrieve the JWT token from the local storage
       const storedToken = localStorage.getItem("authToken");
-
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
-
       return config;
     });
   }
@@ -24,34 +21,34 @@ class ProjectService {
     return this.api.get("/projects");
   };
 
-  // GET - Obtener un proyecto específico por ID
-  getProjectById = async (id) => {
-    return this.api.get(`/api/projects/${id}`);
+  // GET - Obtener proyectos por organización
+  getProjectsByOrganization = async (organizationName) => {
+    return this.api.get(`/projects/organization/${organizationName}`);
   };
 
   // POST - Crear un nuevo proyecto (solo admin)
   createProject = async (requestBody) => {
-    return this.api.post("/api/projects", requestBody);
+    return this.api.post("/projects", requestBody);
   };
 
   // PUT - Actualizar un proyecto (solo admin)
   updateProject = async (id, requestBody) => {
-    return this.api.put(`/api/projects/${id}`, requestBody);
+    return this.api.put(`/projects/${id}`, requestBody);
   };
 
   // DELETE - Eliminar un proyecto (solo admin)
   deleteProject = async (id) => {
-    return this.api.delete(`/api/projects/${id}`);
+    return this.api.delete(`/projects/${id}`);
   };
 
   // POST - Unirse a un proyecto
   joinProject = async (id) => {
-    return this.api.post(`/api/projects/${id}/join`);
+    return this.api.post(`/projects/${id}/join`);
   };
 
   // PATCH - Abandonar un proyecto
   leaveProject = async (id) => {
-    return this.api.patch(`/api/projects/${id}/leave`);
+    return this.api.patch(`/projects/${id}/leave`);
   };
 }
 
