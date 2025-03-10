@@ -1,15 +1,23 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import projectService from "../../services/project.service";
 
 function ProjectsPage() {
   // Obtener el nombre de la organización desde la URL
   const { organizationName } = useParams();
+  const [projects, setProjects] = useState([]);
 
-  // Datos de proyectos (simulados)
-  const projects = [
-    { id: 1, name: "Proyecto 1", description: "Descripción del proyecto 1." },
-    { id: 2, name: "Proyecto 2", description: "Descripción del proyecto 2." },
-    { id: 3, name: "Proyecto 3", description: "Descripción del proyecto 3." },
-  ];
+  useEffect(() => {
+    projectService
+      .getAllProjects()
+      .then((response) => setProjects(response.data))
+      .catch((error) => console.error(error));
+
+    projectService
+      .joinProject("someProjectId")
+      .then((response) => console.log(response.data))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen p-4">
@@ -26,7 +34,7 @@ function ProjectsPage() {
           >
             <div className="card-body">
               <h2 className="card-title">{project.name}</h2>
-              <p>{project.description}</p>
+              <p>{project.descripcion}</p>
             </div>
           </div>
         ))}
