@@ -12,10 +12,38 @@ function Navbar({ onToggleSidebar }) {
 
   return (
     <div className="navbar bg-slate-600 shadow-sm p-4">
-      {/* Logo y nombre de la web (izquierda) */}
-      <div className="flex-1">
-        <Link to="/" className="flex items-center space-x-2">
-          {/* Logo (ícono de manos) */}
+      {/* Botón de menú hamburguesa */}
+      {isLoggedIn && (
+        <div className="flex-none">
+          <div
+            className="btn btn-ghost btn-circle text-white hover:bg-slate-700"
+            onClick={handleMenuClick}
+            aria-label="Toggle menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </div>
+        </div>
+      )}
+
+      {/* Logo y nombre de la web (centrado) */}
+      <div className="flex-1 flex justify-center">
+        <Link
+          to={isLoggedIn ? "/home" : "/"}
+          className="flex items-center space-x-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 text-slate-200"
@@ -35,41 +63,6 @@ function Navbar({ onToggleSidebar }) {
         </Link>
       </div>
 
-      {/* Ícono de menú clickable (solo visible si está logueado) */}
-      {isLoggedIn && (
-        <div className="flex-none">
-          <div
-            className="cursor-pointer p-2"
-            onClick={handleMenuClick}
-            aria-label="Toggle menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-slate-200 hover:text-white transition-colors"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </div>
-        </div>
-      )}
-
-      {/* Botón de Home (solo visible si está logueado) */}
-      {isLoggedIn && (
-        <div className="flex-none">
-          <Link to="/home" className="text-slate-200 hover:text-white">
-            <button className="btn btn-ghost">Home</button>
-          </Link>
-        </div>
-      )}
-
       {/* Avatar y dropdown (solo visible si está logueado) */}
       {isLoggedIn && (
         <div className="flex-none dropdown dropdown-end">
@@ -80,8 +73,10 @@ function Navbar({ onToggleSidebar }) {
           >
             <div className="w-10 rounded-full bg-slate-200 flex items-center justify-center">
               {user && user.name ? (
-                // Mostrar la primera letra del nombre del usuario
-                user.name.charAt(0).toUpperCase()
+                // Mostrar la primera letra del nombre del usuario (más grande y centrada)
+                <span className="text-xl font-bold text-gray-700">
+                  {user.name.charAt(0).toUpperCase()}
+                </span>
               ) : (
                 // Mostrar una silueta de persona si no hay nombre
                 <svg
