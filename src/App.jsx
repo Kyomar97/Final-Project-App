@@ -10,6 +10,7 @@ import IntroPage from "./pages/IntroPage/IntroPage";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
+import ActividadesPage from "./pages/ActividadesPage/ActividadesPage";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -23,16 +24,15 @@ function App() {
       <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       <Routes>
-        {/* Página de introducción */}
         <Route path="/" element={<IntroPage />} />
 
-        {/* Página de inicio */}
         <Route path="/home" element={<HomePage />} />
-
-        {/* Página de proyectos (dinámica según la organización) */}
         <Route path="/projects/:organizationName" element={<ProjectsPage />} />
+        <Route
+          path="/projects/:projectId/actividades"
+          element={<ActividadesPage />}
+        />
 
-        {/* Página de perfil (privada) */}
         <Route
           path="/profile"
           element={
