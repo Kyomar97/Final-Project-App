@@ -27,9 +27,9 @@ function IntroPage() {
         </div>
 
         {/* Componente de autenticación */}
-        <div className="w-full max-w-md bg-white bg-opacity-90 rounded-lg shadow-lg p-8">
-          <AuthPage />
-        </div>
+        {/* <div className="w-full max-w-md bg-white bg-opacity-90 rounded-lg shadow-lg p-8"> */}
+        <AuthPage />
+        {/* </div> */}
       </div>
     </div>
   );

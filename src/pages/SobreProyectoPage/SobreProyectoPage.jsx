@@ -183,10 +183,10 @@ function SobreProyecto() {
             labor del voluntariado en todo el mundo.
           </p>
 
-          {/* Enlaces a Github y Linkdn (acuerdate de poner los enlaces melon) */}
+          {/* Enlaces a Github y Linkdn (ya estan puestos los enlaces) */}
           <div className="flex justify-center space-x-6 mt-8">
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/sebna-omar-gutiérrez-rodríguez-7099231b3"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center text-slate-600 hover:text-slate-800 transition-colors duration-200"

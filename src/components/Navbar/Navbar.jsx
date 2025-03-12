@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
 function Navbar({ onToggleSidebar }) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleMenuClick = (e) => {
     e.stopPropagation(); // Detener la propagación
     onToggleSidebar();
+  };
+
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/");
   };
 
   return (
@@ -98,22 +104,22 @@ function Navbar({ onToggleSidebar }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-slate-400 rounded-box z-50 mt-3 w-52 p-2 shadow" // z-50 para asegurar que esté por encima
+            className="menu menu-sm dropdown-content bg-slate-400 rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link
                 to="/profile"
-                className="text-slate-800 hover:text-slate-900" // Texto más oscuro
+                className="text-slate-800 hover:text-slate-900"
               >
-                Profile
+                Perfil
               </Link>
             </li>
             <li>
               <button
-                onClick={logOutUser}
-                className="text-slate-800 hover:text-slate-900" // Texto más oscuro
+                onClick={handleLogout}
+                className="text-slate-800 hover:text-slate-900"
               >
-                Logout
+                Cerrar sesión
               </button>
             </li>
           </ul>

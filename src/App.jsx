@@ -32,10 +32,7 @@ function App() {
 
         <Route path="/home" element={<HomePage />} />
         <Route path="/projects/:organizationName" element={<ProjectsPage />} />
-        <Route
-          path="/projects/:projectId/actividades"
-          element={<ActividadesPage />}
-        />
+        <Route path="/actividades/:projectId" element={<ActividadesPage />} />
 
         <Route
           path="/profile"
@@ -46,7 +43,6 @@ function App() {
           }
         />
 
-        {/* Nuevas rutas para el sidebar */}
         {/*  <Route path="/proyectos" element={<ProjectsPage />} /> */}
         <Route path="/sobre-proyecto" element={<SobreProyectoPage />} />
         {/* <Route path="/labor-en-canarias" element={<LaborCanariasPage />} /> */}

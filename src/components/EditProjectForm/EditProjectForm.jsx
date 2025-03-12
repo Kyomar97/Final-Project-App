@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import projectService from "../../services/project.service";
 
 function EditProjectForm({
-  projectId,
+  project,
   onClose,
   onSuccess,
   organizationName,
@@ -32,26 +32,28 @@ function EditProjectForm({
     const fetchProject = async () => {
       try {
         setLoading(true);
-        const response = await projectService.api.get(`/projects/${projectId}`);
-        const project = response.data;
+        const response = await projectService.api.get(
+          `/projects/${project._id}`
+        );
+        const fetchedProject = response.data;
 
         setFormData({
-          name: project.name || "",
-          descripcion: project.descripcion || "",
-          organizacion: project.organizacion || organizationName,
-          objetivo: project.objetivo || "",
+          name: fetchedProject.name || "",
+          descripcion: fetchedProject.descripcion || "",
+          organizacion: fetchedProject.organizacion || organizationName,
+          objetivo: fetchedProject.objetivo || "",
           ubicacion: {
-            isla: project.ubicacion?.isla || "",
-            municipio: project.ubicacion?.municipio || "",
+            isla: fetchedProject.ubicacion?.isla || "",
+            municipio: fetchedProject.ubicacion?.municipio || "",
           },
-          fecha_inicio: project.fecha_inicio?.slice(0, 10) || "",
-          fecha_fin: project.fecha_fin?.slice(0, 10) || "",
-          estado: project.estado || "pendiente",
-          beneficiarios: project.beneficiarios || 0,
+          fecha_inicio: fetchedProject.fecha_inicio?.slice(0, 10) || "",
+          fecha_fin: fetchedProject.fecha_fin?.slice(0, 10) || "",
+          estado: fetchedProject.estado || "pendiente",
+          beneficiarios: fetchedProject.beneficiarios || 0,
           recursos: {
-            presupuesto: project.recursos?.presupuesto || 0,
-            financiadores: project.recursos?.financiadores || [],
-            voluntarios: project.recursos?.voluntarios || 0,
+            presupuesto: fetchedProject.recursos?.presupuesto || 0,
+            financiadores: fetchedProject.recursos?.financiadores || [],
+            voluntarios: fetchedProject.recursos?.voluntarios || 0,
           },
         });
       } catch (error) {
@@ -62,10 +64,10 @@ function EditProjectForm({
       }
     };
 
-    if (projectId) {
+    if (project._id) {
       fetchProject();
     }
-  }, [projectId, organizationName]);
+  }, [project._id, organizationName]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -136,7 +138,7 @@ function EditProjectForm({
         organizacion: organizationName,
       };
 
-      await projectService.updateProject(projectId, requestBody);
+      await projectService.updateProject(project._id, requestBody);
 
       alert("Proyecto actualizado con éxito");
 
@@ -160,7 +162,7 @@ function EditProjectForm({
 
     setLoading(true);
     try {
-      await projectService.deleteProject(projectId);
+      await projectService.deleteProject(project._id);
 
       alert("Proyecto eliminado con éxito");
 

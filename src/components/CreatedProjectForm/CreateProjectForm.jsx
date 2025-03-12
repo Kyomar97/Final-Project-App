@@ -5,7 +5,7 @@ function CreateProjectForm({ onClose, onSuccess, organizationName, isAdmin }) {
   const [formData, setFormData] = useState({
     name: "",
     descripcion: "",
-    organizacion: organizationName || "", // 👈 cambia aquí el nombre al correcto
+    organizacion: organizationName || "",
     objetivo: "",
     ubicacion: {
       isla: "",
