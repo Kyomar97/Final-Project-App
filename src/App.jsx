@@ -11,7 +11,11 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import ActividadesPage from "./pages/ActividadesPage/ActividadesPage";
-
+// Importa las nuevas páginas (necesitarás crearlas)
+import SobreProyectoPage from "./pages/SobreProyectoPage/SobreProyectoPage";
+/* import LaborCanariasPage(cambiar nombre y rutas) from "./pages/LaborCanariasPage/LaborCanariasPage";
+import MisProyectosPage(cambiar nombres y rutas) from "./pages/MisProyectosPage/MisProyectosPage";
+ */
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -40,6 +44,15 @@ function App() {
               <ProfilePage />
             </IsPrivate>
           }
+        />
+
+        {/* Nuevas rutas para el sidebar */}
+        {/*  <Route path="/proyectos" element={<ProjectsPage />} /> */}
+        <Route path="/sobre-proyecto" element={<SobreProyectoPage />} />
+        {/* <Route path="/labor-en-canarias" element={<LaborCanariasPage />} /> */}
+        <Route
+          path="/mis-proyectos"
+          element={<IsPrivate>{/* <MisProyectosPage /> */}</IsPrivate>}
         />
       </Routes>
 

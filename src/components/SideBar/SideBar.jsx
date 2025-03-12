@@ -1,13 +1,21 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Sidebar({ isOpen, onToggle }) {
+  const navigate = useNavigate();
+
   // Detener la propagación del evento
   const handleOverlayClick = (e) => {
     e.stopPropagation();
     onToggle();
   };
 
-  // Si no está abierto, no renderizar nada
+  // Función para navegar y cerrar el sidebar
+  const handleNavigation = (path) => {
+    navigate(path);
+    onToggle(); // Cierra el sidebar después de navegar
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -42,13 +50,10 @@ function Sidebar({ isOpen, onToggle }) {
               <span className="font-medium">VolunTrack</span>
             </div>
 
-            {/* Botón cerrar */}
+            {/* Botón cerrar con efecto hover */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggle();
-              }}
-              className="text-slate-200 hover:text-white transition-colors duration-200"
+              onClick={onToggle}
+              className="text-slate-200 hover:text-white hover:bg-slate-600 p-1 rounded transition-colors duration-200"
               aria-label="Close menu"
             >
               <svg
@@ -71,10 +76,13 @@ function Sidebar({ isOpen, onToggle }) {
           <div className="mt-8">
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#proyectos"
+                <Link
+                  to="/proyectos"
                   className="flex items-center px-4 py-3 text-slate-200 hover:bg-slate-600 rounded transition-colors duration-200"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle();
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,13 +99,16 @@ function Sidebar({ isOpen, onToggle }) {
                     />
                   </svg>
                   Proyectos
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#sobre-cruz-roja"
+                <Link
+                  to="/sobre-proyecto"
                   className="flex items-center px-4 py-3 text-slate-200 hover:bg-slate-600 rounded transition-colors duration-200"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle();
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -113,14 +124,17 @@ function Sidebar({ isOpen, onToggle }) {
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  Sobre Cruz Roja
-                </a>
+                  Sobre el Proyecto
+                </Link>
               </li>
               <li>
-                <a
-                  href="#labor-en-canarias"
+                <Link
+                  to="/labor-en-canarias"
                   className="flex items-center px-4 py-3 text-slate-200 hover:bg-slate-600 rounded transition-colors duration-200"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle();
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,13 +151,16 @@ function Sidebar({ isOpen, onToggle }) {
                     />
                   </svg>
                   Labor en Canarias
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#mis-proyectos"
+                <Link
+                  to="/mis-proyectos"
                   className="flex items-center px-4 py-3 text-slate-200 hover:bg-slate-600 rounded transition-colors duration-200"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle();
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +177,7 @@ function Sidebar({ isOpen, onToggle }) {
                     />
                   </svg>
                   Mis Proyectos
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
