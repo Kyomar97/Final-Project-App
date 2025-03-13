@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import projectService from "../../services/project.service";
+import actividadService from "../../services/actividad.service";
 
 function ActividadesPage() {
   const { projectId } = useParams();
@@ -8,7 +8,7 @@ function ActividadesPage() {
 
   useEffect(() => {
     // Obtener las actividades del proyecto seleccionado
-    projectService
+    actividadService
       .getActividadesByProject(projectId)
       .then((response) => {
         setActividades(response.data);
