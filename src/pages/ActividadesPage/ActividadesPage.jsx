@@ -365,7 +365,6 @@ function ActividadesPage() {
   );
 }
 
-// Añadimos un estilo keyframe para la animación de aparición
 const style = document.createElement("style");
 style.textContent = `
   @keyframes fadeIn {
