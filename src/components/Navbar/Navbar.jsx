@@ -79,15 +79,13 @@ function Navbar({ onToggleSidebar }) {
           >
             <div className="w-10 rounded-full bg-slate-200 flex items-center justify-center">
               {user && user.name ? (
-                // Mostrar la primera letra del nombre del usuario (más grande y centrada)
                 <span className="text-xl font-bold text-gray-700">
                   {user.name.charAt(0).toUpperCase()}
                 </span>
               ) : (
-                // Mostrar una silueta de persona si no hay nombre
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-700" // Color gris oscuro
+                  className="h-6 w-6 text-gray-700"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

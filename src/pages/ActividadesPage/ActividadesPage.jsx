@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import actividadService from "../../services/actividad.service";
 import { AuthContext } from "../../context/auth.context";
+import ActivitySuggestions from "../../components/ActivitySuggestions/ActivitySuggestions";
 
 function ActividadesPage() {
   const { projectId } = useParams();
@@ -361,6 +362,9 @@ function ActividadesPage() {
           </svg>
         </button>
       )}
+      <div>
+        <ActivitySuggestions />
+      </div>
     </div>
   );
 }

@@ -49,6 +49,19 @@ class ActividadService {
   deleteActividad = async (actividadId) => {
     return this.api.delete(`/actividades/${actividadId}`);
   };
+
+  // GET - Obtener sugerencias de IA Gemini para actividades
+  getSugerencias = async (projectId) => {
+    try {
+      const response = await this.api.get(
+        `/projects/${projectId}/suggest-tasks`
+      );
+      return response.data.suggestions;
+    } catch (error) {
+      console.error("Error obteniendo sugerencias de IA:", error);
+      throw error;
+    }
+  };
 }
 
 const actividadService = new ActividadService();
