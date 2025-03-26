@@ -53,8 +53,8 @@ class ActividadService {
   // GET - Obtener sugerencias de IA Gemini para actividades
   getSugerencias = async (projectId) => {
     try {
-      const response = await this.api.get(
-        `/projects/${projectId}/suggest-tasks`
+      const response = await this.api.post(
+        `/actividades/${projectId}/suggest-tasks`
       );
       return response.data.suggestions;
     } catch (error) {

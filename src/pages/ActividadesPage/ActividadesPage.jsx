@@ -363,7 +363,7 @@ function ActividadesPage() {
         </button>
       )}
       <div>
-        <ActivitySuggestions />
+        <ActivitySuggestions projectId={projectId} />
       </div>
     </div>
   );

@@ -10,8 +10,20 @@ const ActivitySuggestions = ({ projectId }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const suggestions = await actividadService.getSugerenciasDeIA(projectId);
-      setSuggestions(suggestions);
+      const response = await actividadService.getSugerencias(projectId);
+
+      // Procesar la respuesta si es un string
+      if (typeof response === "string") {
+        const processedSuggestions = response
+          .split("\n") // Dividir por líneas
+          .map((line) => line.replace(/[*\s]+/g, "").trim()) // Eliminar asteriscos y espacios
+          .filter((line) => line.length > 0); // Filtrar líneas vacías
+        setSuggestions(processedSuggestions);
+      } else if (Array.isArray(response)) {
+        setSuggestions(response);
+      } else {
+        throw new Error("La respuesta no contiene un array de sugerencias.");
+      }
     } catch (err) {
       setError("Error al obtener sugerencias. Por favor, inténtalo de nuevo.");
       console.error(err);
