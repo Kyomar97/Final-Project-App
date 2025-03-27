@@ -15,9 +15,9 @@ const ActivitySuggestions = ({ projectId }) => {
       // Procesar la respuesta si es un string
       if (typeof response === "string") {
         const processedSuggestions = response
-          .split("\n") // Dividir por líneas
-          .map((line) => line.replace(/[*\s]+/g, "").trim()) // Eliminar asteriscos y espacios
-          .filter((line) => line.length > 0); // Filtrar líneas vacías
+          .split("\n")
+          .map((line) => line.replace(/^\*\s*/, "").trim())
+          .filter((line) => line.length > 0);
         setSuggestions(processedSuggestions);
       } else if (Array.isArray(response)) {
         setSuggestions(response);
